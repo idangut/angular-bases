@@ -1,0 +1,43 @@
+<h4>Characters</h4>
+<table class="table table-dark table-striped table-hover table-bordered table-responsive"
+  *ngIf="characterList.length > 0">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th class="text-danger">Power level</th>
+      <th class="text-center">Actions</th>
+      <!-- <th>Is First</th>
+      <th>Is Last</th>
+      <th>Is even</th>
+      <th>Is odd</th> -->
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+    <!-- <tr [ngClass]="{'table-success': isLast, 'table-danger': isFirst}" *ngFor="let character of characterList; -->
+    <tr *ngFor="let character of characterList;
+    let i = index;
+    let isFirst = first
+    let isLast = last
+    let isEven = even
+    let isOdd = odd">
+      <td>{{i + 1}}</td>
+      <td>{{character.name}}</td>
+      <td>{{character.power}}</td>
+      <td class="text-center">
+        <button class="btn btn-outline-danger" (click)="onDeleteCharacter(character.id)">
+          X
+        </button>
+      </td>
+      <!-- <td>{{i === characterList.length -1 ? true : i === 0 && true}}</td> -->
+      <!-- <td>{{isFirst ? "Yes" : "No"}}</td>
+      <td>{{isLast ? "Yes" : "No"}}</td>
+      <td>{{isEven ? "Yes" : "No"}}</td>
+      <td>{{isOdd ? "Yes" : "No"}}</td> -->
+    </tr>
+  </tbody>
+</table>
+
+<div class="text-center" *ngIf="characterList.length === 0">
+  <strong class="text-warning">No data to display</strong>
+</div>
